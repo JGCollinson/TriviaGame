@@ -1,0 +1,44 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+}
+.body {
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+	background-image: url(https://storage.googleapis.com/webpractice/bloodmoon.gif);
+	background-position: 50%;
+	background-color: black;
+}
+#content{
+	color: white;
+	background-color: black;
+	border: 10px dashed;
+	border-color: white;
+}
+#gamearea{
+	color: white;
+	background-color: black;
+	border: 10px dashed;
+	border-color: white;
+}
+#hero{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+#picText{
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	color: white;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color:#4AAAA5;
+    top: 75%;
+    left: 50%;
+	transform: translate(-50%, -50%);
+}
+#jbtron{
+	margin-bottom: 30px;
+	padding: 20px; 
+}
