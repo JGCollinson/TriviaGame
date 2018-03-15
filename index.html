@@ -11,18 +11,20 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="assets/css/style.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
   <div class="jumbotron m-5" id="jbtron">
     <div class="justify-content-center">
-      <h1 class="display-auto text-center">The Dark Crystal</h1>
+      <h1 class="display-auto text-center">TriviaGame</h1>
     </div>
   </div>
   <div class="justify-content-center card text-center m-5">
     <div class="card-body">
-      <h1>Wins:
+<!-- change id to reflect correct & wrong -->
+      <h1>Correct:
         <span id="wins"></span>
       </h1>
-      <h1>Losses:
+      <h1>Wrong:
         <span id="losses"></span>
       </h1>
     </div>
@@ -30,32 +32,21 @@
   </div>
   <div class="card text-center">
     <div class="card-header">
+<!-- remove random number with a trivia question and a timer -->
       <strong>Random Number:
         <span id="rando"></span>
       </strong>
       <br>
-      <div>
-        <strong>Crystal Number:
-          <span id="playerNumbo"></span>
-        </strong>
-      </div>
       <div class="card-body">
-        <div class="btn-group justify-content-center" role="group">
-          <a id="unusualGem" class="col-lg-2 btn btn-light p-3">
-            <img class="card-img img-responsive center-block" src="https://storage.googleapis.com/webpractice/FJsORKu%20-%20Imgur.gif">
-          </a>
-          <a id="kyber" class="col-lg-2 btn btn-light">
-            <img class="card-img img-responsive center-block" src="assets/images/kyber.jpg">
-          </a>
-          <a id="dark_crystal" class="col-lg-2 btn btn-light">
-            <img class="card-img img-responsive center-block" src="assets/images/dark_crystal.jpg">
-          </a>
-          <a id="homer" class="col-lg-2 btn btn-light">
-            <img class="card-img img-responsive center-block" src="https://im-01.gifer.com/6Iz.gif">
-          </a>
-        </div>  
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-secondary"></button>
+          <button type="button" class="btn btn-secondary"></button>
+          <button type="button" class="btn btn-secondary"></button>
+          <button type="button" class="btn btn-secondary"></button>
+        </div>
       </div>
     </div>
     <script src='assets/javascript/game.js'></script>
 </body>
+
 </html>
