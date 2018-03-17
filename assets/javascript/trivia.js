@@ -1,3 +1,25 @@
+var clockRunning = false;
+var intervalId;
+var stopwatch = {
+	time: 100,
+	start: function () {
+		if (!clockRunning) {
+			intervalId = setInterval(stopwatch.count, 1000);
+			clockRunning = true;
+		}
+	},
+	count: function () {
+			stopwatch.time = stopwatch.time - 1;
+			$("#stopwatch").text(stopwatch.time);
+		if (stopwatch.time == 0) {
+			$('.jumbotron').hide();
+			$("#result").html('You correctly answered ' + correctAnswers + " out of " + currentquestion + " questions! ").hide();
+			clearInterval(intervalId);
+			clockRunning = false;
+			$('#game-over').append("Game Over");
+		}
+	}
+};
 var questions_answers = [{
 		question: "What was Han Solo's rank in the Rebel Alliance at the Battle of Hoth?",
 		answers: ["Lieutenant", "General", "Admiral", "Captain"],
@@ -28,7 +50,7 @@ var questions_answers = [{
 		answers: ["The Future", "The Force", "The Galaxy", "The Mind"],
 		answer: 1
 	},
-	
+
 ];
 
 var currentquestion = 0;
@@ -37,10 +59,10 @@ var correctAnswers = 0;
 function setupQuestions() {
 
 	$('#question').text(questions_answers[currentquestion].question);
-	$('#first').html('<div class="radio"><label><input type="radio" name="option" value="1" >' + questions_answers[currentquestion].answers[0] + '</label></div>');
-	$('#second').html('<div class="radio"><label><input type="radio" name="option" value="2" >' + questions_answers[currentquestion].answers[1] + '</label></div>');
-	$('#third').html('<div class="radio"><label><input type="radio" name="option" value="3" >' + questions_answers[currentquestion].answers[2] + '</label></div>');
-	$('#fourth').html('<div class="radio"><label><input type="radio" name="option" value="4" >' + questions_answers[currentquestion].answers[3] + '</label></div>');
+	$('#first').html('<div class="radio"><label><input type="radio" name="option" value="1">' + questions_answers[currentquestion].answers[0] + '</label></div>');
+	$('#second').html('<div class="radio"><label><input type="radio" name="option" value="2">' + questions_answers[currentquestion].answers[1] + '</label></div>');
+	$('#third').html('<div class="radio"><label><input type="radio" name="option" value="3">' + questions_answers[currentquestion].answers[2] + '</label></div>');
+	$('#fourth').html('<div class="radio"><label><input type="radio" name="option" value="4">' + questions_answers[currentquestion].answers[3] + '</label></div>');
 };
 
 function checkCorrect() {
@@ -54,8 +76,8 @@ $(document).ready(function () {
 	$('.jumbotron').hide();
 	$('#time-remain').hide();
 	$('#start').click(function () {
-		$('.jumbotron').fadeIn();
-		$('#time-remain').fadeIn();
+		$('.jumbotron').show();
+		$('#time-remain').show();
 		$(this).hide();
 		$('#time-intro').hide();
 		stopwatch.start();
@@ -74,7 +96,7 @@ $(document).ready(function () {
 				$('#next').html('Submit');
 				$('#next').click(function () {
 					$('.jumbotron').hide();
-					$("#result").html('You correctly answered ' + correctAnswers + " out of " + currentquestion + " questions! ").hide();
+					$("#result").html('You correctly answered ' + correctAnswers + " out of " + currentquestion + " questions! ").show();
 					$('#result');
 					clearInterval(intervalId);
 					clockRunning = false;
@@ -83,33 +105,3 @@ $(document).ready(function () {
 		};
 	});
 });
-
-var clockRunning = false;
-var intervalId;
-//  Our stopwatch object.
-var stopwatch = {
-	time: 100,
-	start: function () {
-		if (!clockRunning) {
-			intervalId = setInterval(stopwatch.count, 1000);
-			clockRunning = true;
-		}
-	},
-
-
-	count: function () {
-		stopwatch.time = stopwatch.time - 1;
-		$("#stopwatch").text(stopwatch.time);
-		if (stopwatch.time < 25) {
-			$('#stopwatch').css('color', 'red');
-		}
-
-		if (stopwatch.time == 0) {
-			$('.jumbotron').hide();
-			$("#result").html('You correctly answered ' + correctAnswers + " out of " + currentquestion + " questions! ").hide();
-			clearInterval(intervalId);
-			clockRunning = false;
-			$('#game-over').append("Game Over");
-		}
-	}
-};
