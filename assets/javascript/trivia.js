@@ -1,5 +1,3 @@
-//https://github.com/amitraiberkleybootcamp/TriviaGame
-
 var questions_answers = [{
 		question: "What was Han Solo's rank in the Rebel Alliance at the Battle of Hoth?",
 		answers: ["Lieutenant", "General", "Admiral", "Captain"],
