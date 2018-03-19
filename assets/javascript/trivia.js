@@ -1,25 +1,3 @@
-var clockRunning = false;
-var intervalId;
-var stopwatch = {
-	time: 100,
-	start: function () {
-		if (!clockRunning) {
-			intervalId = setInterval(stopwatch.count, 1000);
-			clockRunning = true;
-		}
-	},
-	count: function () {
-			stopwatch.time = stopwatch.time - 1;
-			$("#stopwatch").text(stopwatch.time);
-		if (stopwatch.time == 0) {
-			$('.jumbotron').hide();
-			$("#result").html('You correctly answered ' + correctAnswers + " out of " + currentquestion + " questions! ").hide();
-			clearInterval(intervalId);
-			clockRunning = false;
-			$('#game-over').append("Game Over");
-		}
-	}
-};
 var questions_answers = [{
 		question: "What was Han Solo's rank in the Rebel Alliance at the Battle of Hoth?",
 		answers: ["Lieutenant", "General", "Admiral", "Captain"],
@@ -52,10 +30,8 @@ var questions_answers = [{
 	},
 
 ];
-
 var currentquestion = 0;
 var correctAnswers = 0;
-
 function setupQuestions() {
 
 	$('#question').text(questions_answers[currentquestion].question);
@@ -71,7 +47,6 @@ function checkCorrect() {
 		correctAnswers++;
 	}
 };
-
 $(document).ready(function () {
 	$('.jumbotron').hide();
 	$('#time-remain').hide();
@@ -105,11 +80,8 @@ $(document).ready(function () {
 		};
 	});
 });
-<<<<<<< HEAD
-
 var clockRunning = false;
 var intervalId;
-//  Our stopwatch object.
 var stopwatch = {
 	time: 100,
 	start: function () {
@@ -118,15 +90,9 @@ var stopwatch = {
 			clockRunning = true;
 		}
 	},
-
-
 	count: function () {
 		stopwatch.time = stopwatch.time - 1;
 		$("#stopwatch").text(stopwatch.time);
-		if (stopwatch.time < 25) {
-			$('#stopwatch').css('color', 'red');
-		}
-
 		if (stopwatch.time == 0) {
 			$('.jumbotron').hide();
 			$("#result").html('You correctly answered ' + correctAnswers + " out of " + currentquestion + " questions! ").hide();
@@ -136,5 +102,3 @@ var stopwatch = {
 		}
 	}
 };
-=======
->>>>>>> gh-pages
