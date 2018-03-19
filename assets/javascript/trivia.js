@@ -35,10 +35,10 @@ var correctAnswers = 0;
 function setupQuestions() {
 
 	$('#question').text(questions_answers[currentquestion].question);
-	$('#first').html('<div class="radio"><label><input type="radio" name="option" value="1">' + questions_answers[currentquestion].answers[0] + '</label></div>');
-	$('#second').html('<div class="radio"><label><input type="radio" name="option" value="2">' + questions_answers[currentquestion].answers[1] + '</label></div>');
-	$('#third').html('<div class="radio"><label><input type="radio" name="option" value="3">' + questions_answers[currentquestion].answers[2] + '</label></div>');
-	$('#fourth').html('<div class="radio"><label><input type="radio" name="option" value="4">' + questions_answers[currentquestion].answers[3] + '</label></div>');
+	$('#a1').html('<div class="radio"><label><input type="radio" name="option" value="1">' + questions_answers[currentquestion].answers[0] + '</label></div>');
+	$('#a2').html('<div class="radio"><label><input type="radio" name="option" value="2">' + questions_answers[currentquestion].answers[1] + '</label></div>');
+	$('#a3').html('<div class="radio"><label><input type="radio" name="option" value="3">' + questions_answers[currentquestion].answers[2] + '</label></div>');
+	$('#a4').html('<div class="radio"><label><input type="radio" name="option" value="4">' + questions_answers[currentquestion].answers[3] + '</label></div>');
 };
 
 function checkCorrect() {
@@ -49,13 +49,13 @@ function checkCorrect() {
 };
 $(document).ready(function () {
 	$('.jumbotron').hide();
-	$('#time-remain').hide();
+	$('#timeLeft').hide();
 	$('#start').click(function () {
 		$('.jumbotron').show();
-		$('#time-remain').show();
+		$('#timeLeft').show();
 		$(this).hide();
-		$('#time-intro').hide();
-		stopwatch.start();
+		$('#startMessage').hide();
+		timer.start();
 	});
 
 	setupQuestions();
@@ -72,7 +72,6 @@ $(document).ready(function () {
 				$('#next').click(function () {
 					$('.jumbotron').hide();
 					$("#result").html('You correctly answered ' + correctAnswers + " out of " + currentquestion + " questions! ").show();
-					$('#result');
 					clearInterval(intervalId);
 					clockRunning = false;
 				});
@@ -82,23 +81,23 @@ $(document).ready(function () {
 });
 var clockRunning = false;
 var intervalId;
-var stopwatch = {
+var timer = {
 	time: 100,
 	start: function () {
 		if (!clockRunning) {
-			intervalId = setInterval(stopwatch.count, 1000);
+			intervalId = setInterval(timer.count, 1000);
 			clockRunning = true;
 		}
 	},
 	count: function () {
-		stopwatch.time = stopwatch.time - 1;
-		$("#stopwatch").text(stopwatch.time);
-		if (stopwatch.time == 0) {
+		timer.time = timer.time - 1;
+		$("#timer").text(timer.time);
+		if (timer.time == 0) {
 			$('.jumbotron').hide();
 			$("#result").html('You correctly answered ' + correctAnswers + " out of " + currentquestion + " questions! ").hide();
 			clearInterval(intervalId);
 			clockRunning = false;
-			$('#game-over').append("Game Over");
+			$('#gameOver').append("Game Over");
 		}
 	}
 };
