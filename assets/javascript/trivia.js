@@ -43,7 +43,7 @@ function setupQuestions() {
 
 function checkCorrect() {
 
-	if ($('input[name=option]:checked').val() == questions_answers[currentquestion].answer) {
+	if ($('input[type=radio]:checked').val() == questions_answers[currentquestion].answer) {
 		correctAnswers++;
 	}
 };
@@ -56,9 +56,9 @@ $(document).ready(function () {
 		$(this).hide();
 		$('#startMessage').hide();
 		timer.start();
+		setupQuestions();
 	});
 
-	setupQuestions();
 
 	$('#next').click(function () {
 		event.preventDefault();
@@ -70,10 +70,10 @@ $(document).ready(function () {
 			if (currentquestion == 5) {
 				$('#next').html('Submit');
 				$('#next').click(function () {
-					$('.jumbotron').hide();
-					$("#result").html('You correctly answered ' + correctAnswers + " out of " + currentquestion + " questions! ").show();
 					clearInterval(intervalId);
 					clockRunning = false;
+					$('.jumbotron').hide();
+					$("#result").html('You correctly answered ' + correctAnswers + " out of " + currentquestion + " questions! ").show();
 				});
 			};
 		};
@@ -93,10 +93,10 @@ var timer = {
 		timer.time = timer.time - 1;
 		$("#timer").text(timer.time);
 		if (timer.time == 0) {
-			$('.jumbotron').hide();
-			$("#result").html('You correctly answered ' + correctAnswers + " out of " + currentquestion + " questions! ").hide();
 			clearInterval(intervalId);
 			clockRunning = false;
+			$('.jumbotron').hide();
+			$("#results").hide();
 			$('#gameOver').append("Game Over");
 		}
 	}
